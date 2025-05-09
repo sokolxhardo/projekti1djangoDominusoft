@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-4" class="permbajtja">
+        <div class="row">
+            {% for i in products|slice:"4" %}
+            <div class="col-md-6" class="imgAudiText">
+                <div class="imgAudi">
+                    <a href="{% url 'audiHPage' i.pk %}"><img src="{{i.product_image1.url}}" alt="audi1" class="test"></a>
+                </div>
+                <div class="audiText">
+                    <h3>{{i.product_name}}</h3>
+                    <p>Cmimi {{i.product_price}} Euro</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% endblock %}
+

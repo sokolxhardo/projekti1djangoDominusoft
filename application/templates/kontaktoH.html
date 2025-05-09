@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4" class="permbajtja">
+  <div class="forma">
+    <h3 id="lutemFormulari">Ju lutemi poltesoni formularin per te na kontaktuar</h3><br>
+    <form class="formaF" method="POST">
+      {% csrf_token %}
+      <label for="emer">Emer</label><br>
+      <input type="text" placeholder="Vendos emrin" name="emri" id="emri"><br>
+      <label for="mbiemer">Mbiemer</label><br>
+      <input type="text" placeholder="Vendos mbiemrin" name="mbiemer" id="mbiemer"><br>
+      <label for="email">Email</label><br>
+      <input type="email" placeholder="Vendos emailin" name="email" id="email"><br>
+      <label for="numer">Numer Telefoni</label><br>
+      <input type="number" placeholder="Vendos numrin e telefonit" name="numer" id="numer"><br>
+      <label for="mesazhi">Mesazhi Juaj</label><br>
+      <input type="text" name="mesazhi" id="mesazhi"><br>
+      <button id="dergo" onclick="dergoMesazhin()">DERGO</button>
+    </form>
+    <div id="msg">
+      {% if messages %}
+      {% for message in messages %}
+      <div class="mt=5" alert alert-{{message.tags}}{% if message.tags == 'error'%}
+       bg-danger-subtle text-emphasis-danger {% endif %}" role="alert">
+       {{ message }}
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  {% endblock %}
